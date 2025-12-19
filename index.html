@@ -1,222 +1,326 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>EduSync • A Qaaf Product</title>
-  <meta name="description" content="EduSync is a unified platform connecting schools, parents, and students for academic updates and learning access. A product by Qaaf." />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EduSync | Unified School Platform</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #2563eb;
+            --primary-dark: #1e40af;
+            --secondary: #64748b;
+            --bg: #f8fafc;
+            --text: #0f172a;
+            --card-bg: #ffffff;
+            --accent: #dbeafe;
+        }
 
-  <style>
-    :root {
-      --bg: #ffffff;
-      --text: #0f172a;
-      --muted: #64748b;
-      --accent: #2563eb;
-      --border: #e5e7eb;
-    }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-    * {
-      box-sizing: border-box;
-    }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+        }
 
-    body {
-      margin: 0;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      line-height: 1.6;
-    }
+        /* --- Header --- */
+        header {
+            padding: 1.5rem 10%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(10px);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid #e2e8f0;
+        }
 
-    .wrapper {
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 48px 24px;
-    }
+        .brand {
+            font-size: 1.5rem;
+            font-weight: 800;
+            letter-spacing: -1px;
+            color: var(--text);
+        }
 
-    header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 72px;
-    }
+        .brand span {
+            color: var(--primary);
+        }
 
-    .brand {
-      font-size: 22px;
-      font-weight: 600;
-      letter-spacing: 0.3px;
-    }
+        /* --- Hero Section --- */
+        .hero {
+            padding: 100px 10%;
+            text-align: center;
+            background: radial-gradient(circle at top right, #e0e7ff, transparent),
+                        radial-gradient(circle at bottom left, #f1f5f9, transparent);
+        }
 
-    .brand span {
-      color: var(--accent);
-    }
+        .hero h1 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            font-weight: 800;
+            color: #1e293b;
+        }
 
-    .hero {
-      max-width: 720px;
-      margin-bottom: 80px;
-    }
+        .hero p {
+            font-size: 1.25rem;
+            color: var(--secondary);
+            max-width: 700px;
+            margin: 0 auto 2rem;
+        }
 
-    .hero h1 {
-      font-size: 44px;
-      font-weight: 700;
-      margin: 0 0 16px;
-    }
+        .btn-primary {
+            background: var(--primary);
+            color: white;
+            padding: 12px 32px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: 0.3s;
+            display: inline-block;
+        }
 
-    .hero p {
-      font-size: 18px;
-      color: var(--muted);
-      margin: 0;
-    }
+        .btn-primary:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 15px -3px rgba(37, 99, 235, 0.3);
+        }
 
-    .section {
-      margin-bottom: 72px;
-    }
+        /* --- Sections --- */
+        .section {
+            padding: 80px 10%;
+        }
 
-    .section h2 {
-      font-size: 28px;
-      margin-bottom: 16px;
-    }
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
 
-    .section p {
-      color: var(--muted);
-      max-width: 760px;
-    }
+        .section-title h2 {
+            font-size: 2.25rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
 
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 24px;
-      margin-top: 32px;
-    }
+        .section-title p {
+            color: var(--secondary);
+        }
 
-    .card {
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 24px;
-      background: #fff;
-    }
+        /* --- Grid & Cards --- */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
 
-    .card h3 {
-      font-size: 18px;
-      margin: 0 0 8px;
-    }
+        .card {
+            background: var(--card-bg);
+            padding: 40px;
+            border-radius: 20px;
+            border: 1px solid #e2e8f0;
+            transition: all 0.3s ease;
+        }
 
-    .card p {
-      margin: 0;
-      color: var(--muted);
-      font-size: 15px;
-    }
+        .card:hover {
+            border-color: var(--primary);
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.05);
+        }
 
-    .highlight {
-      background: #f8fafc;
-      border-radius: 16px;
-      padding: 40px;
-      border: 1px solid var(--border);
-    }
+        .card h3 {
+            margin-bottom: 15px;
+            font-size: 1.5rem;
+            color: var(--primary);
+        }
 
-    footer {
-      margin-top: 96px;
-      padding-top: 24px;
-      border-top: 1px solid var(--border);
-      display: flex;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 16px;
-    }
+        /* --- Features Section --- */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 40px;
+            align-items: center;
+        }
 
-    footer p {
-      margin: 0;
-      font-size: 14px;
-      color: var(--muted);
-    }
+        .feature-item {
+            margin-bottom: 30px;
+        }
 
-    @media (max-width: 640px) {
-      .hero h1 {
-        font-size: 34px;
-      }
-    }
-  </style>
+        .feature-item h4 {
+            font-size: 1.2rem;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .feature-item h4::before {
+            content: "✓";
+            color: var(--primary);
+            font-weight: 900;
+        }
+
+        /* --- Highlight Section --- */
+        .highlight {
+            background: var(--text);
+            color: white;
+            border-radius: 30px;
+            margin: 0 10%;
+            padding: 60px;
+            text-align: center;
+        }
+
+        .highlight h2 {
+            color: white;
+            margin-bottom: 20px;
+        }
+
+        .highlight-steps {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-top: 40px;
+        }
+
+        .step {
+            flex: 1;
+            min-width: 200px;
+        }
+
+        .step-num {
+            font-size: 2rem;
+            font-weight: 800;
+            opacity: 0.3;
+            margin-bottom: 10px;
+        }
+
+        /* --- Footer --- */
+        footer {
+            padding: 60px 10% 30px;
+            text-align: center;
+            border-top: 1px solid #e2e8f0;
+            margin-top: 50px;
+        }
+
+        .footer-brand {
+            font-weight: 700;
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        @media (max-width: 768px) {
+            .features-grid { grid-template-columns: 1fr; }
+            .hero { padding: 60px 5%; }
+            .highlight { margin: 0 5%; padding: 40px 20px; }
+        }
+    </style>
 </head>
 <body>
 
-  <div class="wrapper">
+<header>
+    <div class="brand">Edu<span>Sync</span></div>
+    <a href="#" class="btn-primary" style="padding: 8px 20px; font-size: 0.9rem;">Portal Login</a>
+</header>
 
-    <header>
-      <div class="brand">Edu<span>Sync</span></div>
-    </header>
-
-    <section class="hero">
-      <h1>A unified platform for schools, parents, and students</h1>
-      <p>
+<section class="hero">
+    <h1>A unified platform for schools, parents, and students</h1>
+    <p>
         EduSync brings academic communication, student updates, and learning access
-        into one simple, reliable system. Designed for modern schools. Built for clarity.
-      </p>
-    </section>
+        into one simple, reliable system. Designed for modern schools.
+    </p>
+    <a href="#about" class="btn-primary">Discover the Difference</a>
+</section>
 
-    <section class="section">
-      <h2>What is EduSync</h2>
-      <p>
-        EduSync is a digital platform that helps schools share academic updates,
-        reports, and learning access with parents and students using tools they
-        already trust. It reduces administrative complexity while improving visibility
-        and engagement.
-      </p>
-    </section>
+<section class="section" id="about">
+    <div class="section-title">
+        <h2>What is EduSync?</h2>
+        <p>The bridge between administration and academic success.</p>
+    </div>
+    <div class="features-grid">
+        <div>
+            <p>EduSync is a digital platform that helps schools share academic updates, reports, and learning access using tools they already trust. It reduces administrative complexity while improving visibility and engagement.</p>
+        </div>
+        <div>
+            <div class="feature-item">
+                <h4>Administrative-First</h4>
+                <p>Full control over data, report cards, and communication flow.</p>
+            </div>
+            <div class="feature-item">
+                <h4>Zero-Install Friction</h4>
+                <p>Web-centric design means parents and students access updates via secure links—no apps required.</p>
+            </div>
+        </div>
+    </div>
+</section>
 
-    <section class="section">
-      <h2>Who it is for</h2>
-
-      <div class="grid">
+<section class="section">
+    <div class="section-title">
+        <h2>Built for the Entire Ecosystem</h2>
+    </div>
+    <div class="grid">
         <div class="card">
-          <h3>Schools</h3>
-          <p>
-            Centralize student data, publish report cards, and send official updates
-            with confidence and control.
-          </p>
+            <h3>Schools</h3>
+            <p>Centralize student data, publish report cards, and send official updates with confidence and total control from one secure dashboard.</p>
         </div>
 
         <div class="card">
-          <h3>Parents</h3>
-          <p>
-            Receive timely academic updates and access learning support without
-            installing multiple apps or tracking paperwork.
-          </p>
+            <h3>Parents</h3>
+            <p>Receive timely academic updates and access learning support without installing multiple apps or tracking lost paperwork.</p>
         </div>
 
         <div class="card">
-          <h3>Students</h3>
-          <p>
-            Access learning resources and AI-based academic support through
-            secure web links provided by the school.
-          </p>
+            <h3>Students</h3>
+            <p>Access learning resources and AI-based academic support through secure, school-provided web links that work on any device.</p>
         </div>
-      </div>
-    </section>
+    </div>
+</section>
 
-    <section class="section highlight">
-      <h2>How EduSync works</h2>
-      <p>
-        Schools manage data and updates through a secure admin system.
-        Parents receive official notifications and links.
-        Students interact with learning tools on the web.
-        Communication remains clear, professional, and purpose-driven.
-      </p>
-    </section>
+<section class="highlight">
+    <h2>How EduSync works</h2>
+    <div class="highlight-steps">
+        <div class="step">
+            <div class="step-num">01</div>
+            <p><strong>Manage</strong><br>Schools update data via secure admin system.</p>
+        </div>
+        <div class="step">
+            <div class="step-num">02</div>
+            <p><strong>Notify</strong><br>Parents receive professional one-way notifications.</p>
+        </div>
+        <div class="step">
+            <div class="step-num">03</div>
+            <p><strong>Learn</strong><br>Students interact with learning tools via web links.</p>
+        </div>
+    </div>
+</section>
 
-    <section class="section">
-      <h2>Built with intention</h2>
-      <p>
-        EduSync is designed with privacy, simplicity, and scalability in mind.
-        It avoids unnecessary complexity and focuses on what matters most.
-        Reliable communication. Clear access. Better outcomes.
-      </p>
-    </section>
+<section class="section">
+    <div class="section-title">
+        <h2>Built with Intention</h2>
+    </div>
+    <div style="max-width: 800px; margin: 0 auto text-align: center;">
+        <p style="text-align: center; font-size: 1.2rem; color: var(--secondary);">
+            EduSync is designed with privacy, simplicity, and scalability in mind. 
+            It avoids noise and focuses on what matters most: 
+            <strong>Reliable communication. Clear access. Better outcomes.</strong>
+        </p>
+    </div>
+</section>
 
-    <footer>
-      <p>EduSync is a product by Qaaf</p>
-      <p>© 2025 Qaaf. All rights reserved.</p>
-    </footer>
-
-  </div>
+<footer>
+    <span class="footer-brand">EduSync</span>
+    <p>A product by <strong>Qaaf</strong></p>
+    <p style="font-size: 0.8rem; margin-top: 10px; color: #94a3b8;">© 2025 Qaaf. All rights reserved.</p>
+</footer>
 
 </body>
 </html>
